@@ -7,13 +7,15 @@ WIKI_INFOBOX=infobox.jsonl
 DENSE_PATH=<path_to_your_dense_retriever_database>
 ENCODER_PATH=facebook/contriever-msmarco
 
-python flexrag.entrypoints.prepare_index \
+python -m flexrag.entrypoints.prepare_index \
     retriever_type=dense \
     corpus_path=[$WIKI_FILE,$WIKI_INFOBOX] \
+    saving_fields=[text] \
     dense_config.database_path=$DENSE_PATH \
     dense_config.passage_encoder_config.encoder_type=hf \
     dense_config.passage_encoder_config.hf_config.model_path=$ENCODER_PATH \
     dense_config.passage_encoder_config.hf_config.device_id=[0] \
+    dense_config.encode_fields=[text] \
     dense_config.index_type=faiss \
     dense_config.batch_size=1024 \
     dense_config.log_interval=100000
