@@ -1,10 +1,12 @@
 import os
 from copy import deepcopy
 from dataclasses import dataclass
+from typing import Optional
 
 from flexrag.assistant import ASSISTANTS
+from flexrag.common_dataclass import RetrievedContext
 from flexrag.prompt import ChatTurn, ChatPrompt
-from flexrag.retriever import DenseRetriever, DenseRetrieverConfig, RetrievedContext
+from flexrag.retriever import DenseRetriever, DenseRetrieverConfig, LocalRetriever
 from flexrag.utils import Choices, LOGGER_MANAGER
 
 from .searcher import BaseSearcher, BaseSearcherConfig
@@ -17,6 +19,7 @@ logger = LOGGER_MANAGER.getLogger("levelrag.dense_searcher")
 class DenseSearcherConfig(BaseSearcherConfig, DenseRetrieverConfig):
     rewrite_query: Choices(["never", "pseudo", "adaptive"]) = "never"  # type: ignore
     max_rewrite_depth: int = 3
+    hf_repo: Optional[str] = None
 
 
 @ASSISTANTS("dense", config_class=DenseSearcherConfig)
@@ -28,7 +31,10 @@ class DenseSearcher(BaseSearcher):
         self.rewrite_depth = cfg.max_rewrite_depth
 
         # load Dense Retrieve
-        self.retriever = DenseRetriever(cfg)
+        if cfg.hf_repo is not None:
+            self.retriever = LocalRetriever.load_from_hub(cfg.hf_repo)
+        else:
+            self.retriever = DenseRetriever(cfg)
 
         # load prompts
         self.rewrite_with_ctx_prompt = ChatPrompt.from_json(

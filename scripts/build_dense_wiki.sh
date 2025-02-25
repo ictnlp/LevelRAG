@@ -9,8 +9,9 @@ ENCODER_PATH=facebook/contriever-msmarco
 
 python -m flexrag.entrypoints.prepare_index \
     retriever_type=dense \
-    corpus_path=[$WIKI_FILE,$WIKI_INFOBOX] \
-    saving_fields=[text] \
+    file_paths=[$WIKI_FILE,$WIKI_INFOBOX] \
+    saving_fields=[title,section,text] \
+    id_field=id \
     dense_config.database_path=$DENSE_PATH \
     dense_config.passage_encoder_config.encoder_type=hf \
     dense_config.passage_encoder_config.hf_config.model_path=$ENCODER_PATH \

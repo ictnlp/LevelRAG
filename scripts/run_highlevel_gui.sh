@@ -9,10 +9,8 @@ ENCODER_PATH=facebook/contriever-msmarco
 BING_KEY="<your_bing_search_subscription_key>"
 
 
-python -m flexrag.entrypoints.run_assistant \
+python -m flexrag.entrypoints.run_interactive \
     user_module=$LEVELRAG_PATH/searchers \
-    name=nq \
-    split=test \
     assistant_type=highlevel \
     highlevel_config.searchers=[keyword,web,dense] \
     highlevel_config.decompose=True \
@@ -49,8 +47,4 @@ python -m flexrag.entrypoints.run_assistant \
     highlevel_config.generator_type=openai \
     highlevel_config.openai_config.model_name=$MODEL_NAME \
     highlevel_config.openai_config.base_url=$BASE_URL \
-    highlevel_config.gen_cfg.do_sample=False \
-    eval_config.metrics_type=[retrieval_success_rate,generation_f1,generation_em] \
-    eval_config.retrieval_success_rate_config.eval_field=text \
-    eval_config.response_preprocess.processor_type=[simplify_answer] \
-    log_interval=10
+    highlevel_config.gen_cfg.do_sample=False

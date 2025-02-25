@@ -3,15 +3,12 @@ from copy import deepcopy
 from dataclasses import dataclass, field
 
 from flexrag.assistant import PREDEFINED_PROMPTS, AssistantBase
-from flexrag.models import GENERATORS, GenerationConfig
+from flexrag.common_dataclass import RetrievedContext
+from flexrag.models import GENERATORS, GenerationConfig, GeneratorConfig
 from flexrag.prompt import ChatPrompt, ChatTurn
-from flexrag.retriever import RetrievedContext
 from flexrag.utils import LOGGER_MANAGER, Choices
 
 logger = LOGGER_MANAGER.getLogger("levelrag.searcher")
-
-
-GeneratorConfig = GENERATORS.make_config()
 
 
 @dataclass
@@ -49,7 +46,7 @@ class BaseSearcher(AssistantBase):
     ) -> tuple[list[RetrievedContext], list[dict[str, object]]]:
         return
 
-    def answer(self, question: str)  -> tuple[str, list[RetrievedContext], dict]:
+    def answer(self, question: str) -> tuple[str, list[RetrievedContext], dict]:
         ctxs, history = self.search(question)
         response, prompt = self.answer_with_contexts(question, ctxs)
         return response, ctxs, {"prompt": prompt, "search_histories": history}

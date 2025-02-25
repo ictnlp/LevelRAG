@@ -4,8 +4,8 @@ from copy import deepcopy
 from dataclasses import dataclass
 
 from flexrag.assistant import ASSISTANTS
-from flexrag.prompt import ChatTurn, ChatPrompt
-from flexrag.retriever import RetrievedContext
+from flexrag.common_dataclass import RetrievedContext
+from flexrag.prompt import ChatPrompt, ChatTurn
 
 from .hybrid_searcher import HybridSearcher, HybridSearcherConfig
 

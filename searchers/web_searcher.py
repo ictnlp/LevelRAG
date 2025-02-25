@@ -4,8 +4,9 @@ from copy import deepcopy
 from dataclasses import dataclass
 
 from flexrag.assistant import ASSISTANTS
+from flexrag.common_dataclass import RetrievedContext
 from flexrag.prompt import ChatTurn, ChatPrompt
-from flexrag.retriever import RetrievedContext, BingRetriever, BingRetrieverConfig
+from flexrag.retriever import BingRetriever, BingRetrieverConfig
 
 from .searcher import BaseSearcher, BaseSearcherConfig
 

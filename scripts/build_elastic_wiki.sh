@@ -8,8 +8,9 @@ ELASTIC_HOST=http://127.0.0.1:9200/
 
 python -m flexrag.entrypoints.prepare_index \
     retriever_type=elastic \
-    corpus_path=[$WIKI_FILE,$WIKI_INFOBOX] \
-    saving_fields=[text] \
+    file_paths=[$WIKI_FILE,$WIKI_INFOBOX] \
+    saving_fields=[title,section,text] \
+    id_field=id \
     elastic_config.host=$ELASTIC_HOST \
     elastic_config.index_name=wiki \
     elastic_config.batch_size=512 \

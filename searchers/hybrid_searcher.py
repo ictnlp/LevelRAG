@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 
 from flexrag.assistant import ASSISTANTS
-from flexrag.retriever import RetrievedContext
+from flexrag.common_dataclass import RetrievedContext
 from flexrag.utils import Choices
 
 from .keyword_searcher import KeywordSearcher, KeywordSearcherConfig
