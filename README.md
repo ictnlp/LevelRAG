@@ -110,6 +110,13 @@ We also provide a GUI demo for LevelRAG. You can run the GUI demo by running the
 If you think building the retriever is too complicated, you can run the simple version of LevelRAG by running the 
 `run_simple.sh` script in the `scripts` folder. The simple version of LevelRAG only uses the `DenseRetriever` and does not require the `WebRetriever` and the `ElasticRetriever`. Thanks to the good multi-hop problem decomposition and sub-query adaptivity optimization, LevelRAG can achieve good performance even with a single retriever, and the running speed is faster. You can also run the `run_simple_gui.sh` script to start the GUI application of the simple version of LevelRAG.
 
+## Experimental Results
+We conducted experiments on multiple single-hop and multi-hop knowledge-intensive question answering datasets. The experimental results show that, compared to the baseline method, LevelRAG achieves a significant performance improvement. Please refer to the table below for the experimental results.
+
+<center>
+<img src="./assets/ExperimentalResults.png" width="100%">
+</center>
+
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 

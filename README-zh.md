@@ -109,6 +109,13 @@ python -m vllm.entrypoints.openai.api_server \
 
 该脚本使用了 FlexRAG 项目提供的 `DenseRetriever` 检索器，因此您**无需构建索引**，直接运行脚本即可。
 
+## 实验结果
+我们在多个单跳及多跳知识密集型问答数据集上进行了实验。实验结果显示，相较于对比方法LevelRAG实现了非常显著的性能提升，实验结果请参考下表。
+
+<center>
+<img src="./assets/ExperimentalResults.png" width="100%">
+</center>
+
 ## 许可
 本项目使用 MIT 许可证。有关更多信息，请参阅 [LICENSE](LICENSE) 文件。
 
