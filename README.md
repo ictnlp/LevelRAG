@@ -1,5 +1,17 @@
 # LevelRAG: Enhancing Retrieval-Augmented Generation with Multi-hop Logic Planning over Rewriting Augmented Searchers
 
+
+![Language](https://img.shields.io/badge/language-python-brightgreen)
+[![Code Style](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
+[![Imports: isort](https://img.shields.io/badge/imports-isort-blue)](https://pycqa.github.io/isort/)
+[![github license](https://img.shields.io/github/license/ictnlp/LevelRAG)](LICENSE)
+
+<center>
+
+\[ [English](README.md) | [中文](README-zh.md) \]
+
+</center>
+
 Source code for paper **"LevelRAG: Enhancing Retrieval-Augmented Generation with Multi-hop Logic Planning over Rewriting Augmented Searchers"**.
 
 ## Overview
@@ -97,6 +109,9 @@ We also provide a GUI demo for LevelRAG. You can run the GUI demo by running the
 ## Running the Simple LevelRAG
 If you think building the retriever is too complicated, you can run the simple version of LevelRAG by running the 
 `run_simple.sh` script in the `scripts` folder. The simple version of LevelRAG only uses the `DenseRetriever` and does not require the `WebRetriever` and the `ElasticRetriever`. Thanks to the good multi-hop problem decomposition and sub-query adaptivity optimization, LevelRAG can achieve good performance even with a single retriever, and the running speed is faster. You can also run the `run_simple_gui.sh` script to start the GUI application of the simple version of LevelRAG.
+
+## License
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ## Citation
 If you find our work useful, please consider citing our paper:

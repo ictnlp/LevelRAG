@@ -1,5 +1,10 @@
 # LevelRAG: Enhancing Retrieval-Augmented Generation with Multi-hop Logic Planning over Rewriting Augmented Searchers
 
+![Language](https://img.shields.io/badge/language-python-brightgreen)
+[![Code Style](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
+[![Imports: isort](https://img.shields.io/badge/imports-isort-blue)](https://pycqa.github.io/isort/)
+[![github license](https://img.shields.io/github/license/ictnlp/LevelRAG)](LICENSE)
+
 本项目为论文 **LevelRAG: Enhancing Retrieval-Augmented Generation with Multi-hop Logic Planning over Rewriting Augmented Searchers** 的源码。
 
 ## 概览
@@ -103,6 +108,9 @@ python -m vllm.entrypoints.openai.api_server \
 如果您不希望使用 `WebRetriever` 及 `ElasticRetriever`。您可以仅使用 `DenseRetriever` 来运行 LevelRAG。得益于良好的多跳问题分解及子查询适应性优化， LevelRAG 在仅使用单一检索器时也能取得不错的效果，且运行速度更快。您可以通过运行 `scripts` 文件夹中的 `run_simple.sh` 脚本来运行 Simple LevelRAG 的评估脚本，或运行 `run_simple_gui.sh` 脚本来启动 Simple LevelRAG 的图形界面。
 
 该脚本使用了 FlexRAG 项目提供的 `DenseRetriever` 检索器，因此您**无需构建索引**，直接运行脚本即可。
+
+## 许可
+本项目使用 MIT 许可证。有关更多信息，请参阅 [LICENSE](LICENSE) 文件。
 
 
 ## 引用
