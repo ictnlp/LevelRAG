@@ -4,8 +4,9 @@
 [![Code Style](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/imports-isort-blue)](https://pycqa.github.io/isort/)
 [![github license](https://img.shields.io/github/license/ictnlp/LevelRAG)](LICENSE)
+[![arXiv](https://img.shields.io/badge/arXiv-2502.18139-b31b1b)](https://arxiv.org/abs/2502.18139)
 
-本项目为论文 **LevelRAG: Enhancing Retrieval-Augmented Generation with Multi-hop Logic Planning over Rewriting Augmented Searchers** 的源码。
+本项目为论文 [**LevelRAG: Enhancing Retrieval-Augmented Generation with Multi-hop Logic Planning over Rewriting Augmented Searchers**](https://arxiv.org/abs/2502.18139) 的源码。
 
 ## 概览
 LevelRAG 是一种两阶段的检索增强生成（RAG）框架，结合了多跳逻辑规划和混合检索，以提高检索过程的完整性和准确性。其中第一阶段采用一个高级搜索器，将用户查询分解为原子查询。第二阶段利用多个低级搜索器，为每个子查询检索最相关的文档，然后将相关信息汇总到高级搜索器中生成最终答案。在每个低级搜索器中，采用大型语言模型（LLMs）对原子查询进行适应性优化，以更好地适应低级搜索器中内置的检索器。
@@ -31,6 +32,10 @@ git clone https://github.com/ictnlp/LevelRAG
 ```
 
 ### 准备检索器
+
+> [!TIP]
+> 如果您希望以更简单的方式运行LevelRAG，请查看[运行 Simple LevelRAG](#运行-simple-levelrag)一节。
+
 在运行 LevelRAG 前，需要构建检索器。LevelRAG 使用了三种不同的检索器，分别是 `DenseRetriever`、`ElasticRetriever`和`WebRetriever` 。除了 `WebRetriever` 不需要构建索引外，`DenseRetriever` 和 `ElasticRetriever` 都需要先构建索引。在我们的实验中，我们使用了 [Atlas](https://github.com/facebookresearch/atlas) 提供的维基百科语料库。您可以通过以下命令下载语料库：
 
 
@@ -109,6 +114,12 @@ python -m vllm.entrypoints.openai.api_server \
 
 该脚本使用了 FlexRAG 项目提供的 `DenseRetriever` 检索器，因此您**无需构建索引**，直接运行脚本即可。
 
+> [!NOTE]
+> 请确认您已经将 `run_simple.sh` 或 `run_simple_gui.sh` 脚本中的 `API_KEY` 替换为您的 OpenAI API 密钥。
+
+> [!TIP]
+> 您也可以通过替换 `run_simple.sh` 或 `run_simple_gui.sh` 脚本中的 `MODEL_NAME` 来使用其它大模型作为生成器。
+
 ## 实验结果
 我们在多个单跳及多跳知识密集型问答数据集上进行了实验。实验结果显示，相较于对比方法LevelRAG实现了非常显著的性能提升，实验结果请参考下表。
 
@@ -124,6 +135,15 @@ python -m vllm.entrypoints.openai.api_server \
 如果您觉得我们的工作对您有所帮助，请考虑引用我们的论文或 Star 本项目。
 <!-- TODO: Add the citation here -->
 ```bibtex
+@misc{zhang2025levelragenhancingretrievalaugmentedgeneration,
+      title={LevelRAG: Enhancing Retrieval-Augmented Generation with Multi-hop Logic Planning over Rewriting Augmented Searchers}, 
+      author={Zhuocheng Zhang and Yang Feng and Min Zhang},
+      year={2025},
+      eprint={2502.18139},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2502.18139}, 
+}
 ```
 
 如果您对本项目有任何问题，欢迎在 GitHub 上创建 issue 或通过邮件联系我们（zhangzhuocheng20z@ict.acn.cn）。

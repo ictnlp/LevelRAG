@@ -1,8 +1,8 @@
 #!/bin/bash
 
 LEVELRAG_PATH="<path_to_levelrag>"
-MODEL_NAME="Qwen2-7B-Instruct"
-BASE_URL="http://127.0.0.1:8000/v1"
+MODEL_NAME="gpt-4o"
+API_KEY="<your_openai_api_key>"
 
 
 python -m flexrag.entrypoints.run_assistant \
@@ -18,13 +18,13 @@ python -m flexrag.entrypoints.run_assistant \
     highlevel_config.dense_config.response_type=short \
     highlevel_config.dense_config.generator_type=openai \
     highlevel_config.dense_config.openai_config.model_name=$MODEL_NAME \
-    highlevel_config.dense_config.openai_config.base_url=$BASE_URL \
+    highlevel_config.dense_config.openai_config.api_key=$API_KEY \
     highlevel_config.dense_config.gen_cfg.do_sample=False \
     highlevel_config.dense_config.hf_repo='FlexRAG/wiki2021_atlas_contriever' \
     highlevel_config.response_type=short \
     highlevel_config.generator_type=openai \
     highlevel_config.openai_config.model_name=$MODEL_NAME \
-    highlevel_config.openai_config.base_url=$BASE_URL \
+    highlevel_config.openai_config.api_key=$api_key \
     highlevel_config.gen_cfg.do_sample=False \
     eval_config.metrics_type=[retrieval_success_rate,generation_f1,generation_em] \
     eval_config.retrieval_success_rate_config.eval_field=text \

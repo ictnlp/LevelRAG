@@ -5,6 +5,7 @@
 [![Code Style](https://img.shields.io/badge/code%20style-black-black)](https://github.com/psf/black)
 [![Imports: isort](https://img.shields.io/badge/imports-isort-blue)](https://pycqa.github.io/isort/)
 [![github license](https://img.shields.io/github/license/ictnlp/LevelRAG)](LICENSE)
+[![arXiv](https://img.shields.io/badge/arXiv-2502.18139-b31b1b)](https://arxiv.org/abs/2502.18139)
 
 <center>
 
@@ -12,7 +13,7 @@
 
 </center>
 
-Source code for paper **"LevelRAG: Enhancing Retrieval-Augmented Generation with Multi-hop Logic Planning over Rewriting Augmented Searchers"**.
+Source code for paper [**LevelRAG: Enhancing Retrieval-Augmented Generation with Multi-hop Logic Planning over Rewriting Augmented Searchers**](https://arxiv.org/abs/2502.18139).
 
 ## Overview
 **LevelRAG** is a two-stage retrieval-augmented generation (RAG) framework that incorporates multi-hop logic planning and hybrid retrieval to enhance both completeness and accuracy of the retrieval process. The first stage involves a high-level searcher that decomposing the user query into atomic sub-queries. The second stage utilizes multiple low-level searchers to retrieve the most relevant documents for each sub-query, which are then used to generate the final answer. In each low-level searcher, large language models (LLMs) are employed to refine the atomic queries to better fit the corresponding retriever.
@@ -36,6 +37,10 @@ git clone https://github.com/ictnlp/LevelRAG
 ```
 
 ### Prepare the Retriever
+
+> [!TIP]
+> If you want to run LevelRAG in a simpler way, please refer to the [Running the Simple LevelRAG](#running-the-simple-levelrag) section.
+
 Before running the LevelRAG, preparing the retriever is necessary. LevelRAG employs three kind of retrievers in total, naming `DenseRetriever`, `ElasticRetriever`, and `WebRetriever`, respectively. Except for the `WebRetriever`, which does not require index construction, both the `DenseRetriever` and the `ElasticRetriever` need to prepare the index first. In our experiments, we use the wikipedia corpus provided by [Atlas](https://github.com/facebookresearch/atlas). You can download the corpus by running the following command:
 
 ```bash
@@ -110,6 +115,9 @@ We also provide a GUI demo for LevelRAG. You can run the GUI demo by running the
 If you think building the retriever is too complicated, you can run the simple version of LevelRAG by running the 
 `run_simple.sh` script in the `scripts` folder. The simple version of LevelRAG only uses the `DenseRetriever` and does not require the `WebRetriever` and the `ElasticRetriever`. Thanks to the good multi-hop problem decomposition and sub-query adaptivity optimization, LevelRAG can achieve good performance even with a single retriever, and the running speed is faster. You can also run the `run_simple_gui.sh` script to start the GUI application of the simple version of LevelRAG.
 
+> [!NOTE]
+> Please make sure you have change the `API_KEY` in the `run_simple.sh` script to your own OpenAI API_KEY.
+
 ## Experimental Results
 We conducted experiments on multiple single-hop and multi-hop knowledge-intensive question answering datasets. The experimental results show that, compared to the baseline method, LevelRAG achieves a significant performance improvement. Please refer to the table below for the experimental results.
 
@@ -124,6 +132,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 If you find our work useful, please consider citing our paper:
 <!-- TODO: Add the citation here -->
 ```bibtex
+@misc{zhang2025levelragenhancingretrievalaugmentedgeneration,
+      title={LevelRAG: Enhancing Retrieval-Augmented Generation with Multi-hop Logic Planning over Rewriting Augmented Searchers}, 
+      author={Zhuocheng Zhang and Yang Feng and Min Zhang},
+      year={2025},
+      eprint={2502.18139},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2502.18139}, 
+}
 ```
 
 If you have any questions, feel free to create an issue on GitHub or contact us via email (zhangzhuocheng20z@ict.acn.cn).
