@@ -19,10 +19,10 @@ LevelRAG 是一种两阶段的检索增强生成（RAG）框架，结合了多�
 ## 运行 LevelRAG
 
 ### 环境准备
-本项目是基于 [FlexRAG](https://github.com/ictnlp/flexrag) 实现的。请参照以下命令安装 FlexRAG：
+本项目是基于 [FlexRAG](https://github.com/ictnlp/FlexRAG) 实现的。请参照以下命令安装 FlexRAG：
 
 ```bash
-pip install flexrag==0.1.11
+pip install flexrag==0.1.12
 ```
 
 下载本项目源码：
