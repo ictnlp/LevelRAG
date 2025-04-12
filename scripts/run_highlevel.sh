@@ -38,13 +38,15 @@ python -m flexrag.entrypoints.run_assistant \
     highlevel_config.dense_config.query_encoder_config.encoder_type=hf \
     highlevel_config.dense_config.query_encoder_config.hf_config.model_path=$ENCODER_PATH \
     highlevel_config.dense_config.query_encoder_config.hf_config.device_id=[0] \
+    highlevel_config.web_config.search_engine_type=bing \
+    highlevel_config.web_config.bing_config.subscription_key=$BING_KEY \
+    highlevel_config.web_config.web_reader_type=snippet \
     highlevel_config.web_config.rewrite_query=False \
     highlevel_config.web_config.response_type=short \
     highlevel_config.web_config.generator_type=openai \
     highlevel_config.web_config.openai_config.model_name=$MODEL_NAME \
     highlevel_config.web_config.openai_config.base_url=$BASE_URL \
     highlevel_config.web_config.gen_cfg.do_sample=False \
-    highlevel_config.web_config.subscription_key=$BING_KEY \
     highlevel_config.response_type=short \
     highlevel_config.generator_type=openai \
     highlevel_config.openai_config.model_name=$MODEL_NAME \

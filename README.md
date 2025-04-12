@@ -28,7 +28,7 @@ Source code for paper [**LevelRAG: Enhancing Retrieval-Augmented Generation with
 ### Prepare the Environment
 Our code is based on [FlexRAG](https://github.com/ictnlp/FlexRAG) project. Please follow the instruction to install FlexRAG:
 ```bash
-pip install flexrag==0.1.12
+pip install flexrag==0.2.0
 ```
 
 Download the source code of this project:

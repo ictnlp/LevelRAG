@@ -5,17 +5,16 @@ from dataclasses import dataclass
 
 from flexrag.assistant import ASSISTANTS
 from flexrag.common_dataclass import RetrievedContext
-from flexrag.prompt import ChatTurn, ChatPrompt
-from flexrag.retriever import BingRetriever, BingRetrieverConfig
+from flexrag.prompt import ChatPrompt, ChatTurn
+from flexrag.retriever import SimpleWebRetriever, SimpleWebRetrieverConfig
 
 from .searcher import BaseSearcher, BaseSearcherConfig
-
 
 logger = logging.getLogger("WebSearcher")
 
 
 @dataclass
-class WebSearcherConfig(BaseSearcherConfig, BingRetrieverConfig):
+class WebSearcherConfig(BaseSearcherConfig, SimpleWebRetrieverConfig):
     rewrite_query: bool = False
 
 
@@ -27,7 +26,7 @@ class WebSearcher(BaseSearcher):
         self.rewrite = cfg.rewrite_query
 
         # load Web Retrieve
-        self.retriever = BingRetriever(cfg)
+        self.retriever = SimpleWebRetriever(cfg)
 
         # load prompt
         self.rewrite_prompt = ChatPrompt.from_json(
